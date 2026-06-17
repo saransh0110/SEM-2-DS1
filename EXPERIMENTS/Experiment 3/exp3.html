@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Mobile-First Responsive Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-purple-600">FitLife</h1>
+            <button id="menuBtn" class="md:hidden text-gray-700">☰</button>
+            <ul id="menu" class="hidden md:flex gap-6">
+                <li><a href="#home" class="text-gray-700 hover:text-purple-600">Home</a></li>
+                <li><a href="#programs" class="text-gray-700 hover:text-purple-600">Programs</a></li>
+                <li><a href="#trainers" class="text-gray-700 hover:text-purple-600">Trainers</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-purple-600">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 border-t border-gray-200">
+            <a href="#home" class="block py-2 text-gray-700">Home</a>
+            <a href="#programs" class="block py-2 text-gray-700">Programs</a>
+            <a href="#trainers" class="block py-2 text-gray-700">Trainers</a>
+            <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-12 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Transform Your Body</h2>
+            <p class="text-lg mb-6 opacity-90">Join FitLife and achieve your fitness goals</p>
+            <button class="bg-white text-purple-600 font-bold py-2 px-6 rounded hover:bg-gray-100">Join Now</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="programs" class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Our Programs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Weight Training -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="text-5xl mb-4">🏋️</div>
+                    <h4 class="text-2xl font-bold mb-3">Weight Training</h4>
+                    <p class="text-gray-600 mb-4">Build muscle and strength with personalized workout plans.</p>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Learn More</button>
+                </div>
+
+                <!-- Yoga Classes -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="text-5xl mb-4">🧘</div>
+                    <h4 class="text-2xl font-bold mb-3">Yoga Classes</h4>
+                    <p class="text-gray-600 mb-4">Improve flexibility and mental clarity with guided sessions.</p>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Learn More</button>
+                </div>
+
+                <!-- Diet Plans -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="text-5xl mb-4">🥗</div>
+                    <h4 class="text-2xl font-bold mb-3">Diet Plans</h4>
+                    <p class="text-gray-600 mb-4">Customized nutrition plans tailored to your lifestyle.</p>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="bg-gray-100 py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Expert Trainers</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <div class="text-6xl mb-4">👨‍🏫</div>
+                    <h4 class="text-xl font-bold">John Smith</h4>
+                    <p class="text-gray-600 text-sm">Strength Specialist</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <div class="text-6xl mb-4">👩‍🏫</div>
+                    <h4 class="text-xl font-bold">Sarah Johnson</h4>
+                    <p class="text-gray-600 text-sm">Yoga Coach</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 text-center">
+                    <div class="text-6xl mb-4">👨‍⚕️</div>
+                    <h4 class="text-xl font-bold">Mike Davis</h4>
+                    <p class="text-gray-600 text-sm">Nutrition Expert</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-xl font-bold mb-2">FitLife</h4>
+            <p class="mb-4">📧 info@fitlife.com | 📱 +1 (555) 123-4567</p>
+            <p class="text-gray-400 text-sm">&copy; 2024 FitLife. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>

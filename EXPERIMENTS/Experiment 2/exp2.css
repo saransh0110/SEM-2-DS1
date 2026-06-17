@@ -1,0 +1,468 @@
+/* ============================================
+   Global Styles & Color Variables
+   ============================================ */
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --dark-bg: #1a1a2e;
+  --light-bg: #f8f9fa;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* ============================================
+   Typography Styles
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+/* ============================================
+   Navigation Bar Styles
+   ============================================ */
+.navbar {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d3f 100%) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  padding: 1rem 0 !important;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.navbar-brand {
+  font-size: 1.5rem !important;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800 !important;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  font-weight: 600 !important;
+  color: #e0e0e0 !important;
+  position: relative;
+  transition: var(--transition);
+  padding: 0.5rem 1.25rem !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-color) !important;
+}
+
+/* ============================================
+   Main Content Section
+   ============================================ */
+main {
+  padding: 3rem 1rem !important;
+}
+
+.text-center {
+  margin-bottom: 3rem !important;
+}
+
+.text-center p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   Product Card Styles
+   ============================================ */
+.card {
+  border: none !important;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  transition: var(--transition);
+  transform: translateY(0);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-img-top {
+  transition: var(--transition);
+  filter: brightness(1);
+}
+
+.card:hover .card-img-top {
+  filter: brightness(1.1) saturate(1.1);
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.card:hover .card-title {
+  color: var(--primary-color);
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Badge Styles */
+.badge {
+  padding: 0.5rem 1rem !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-radius: 50px;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f) !important;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #51cf66, #37b24d) !important;
+}
+
+/* Price & Button */
+.fs-4.fw-bold {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.5rem !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #51cf66, #37b24d) !important;
+  border: none !important;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--text-light) !important;
+  border: none !important;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-dark) !important;
+}
+
+/* ============================================
+   Modal Styles
+   ============================================ */
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  background: white;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  color: var(--text-dark);
+}
+
+.modal-body strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.list-group-item {
+  border-color: var(--border-color) !important;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  padding: 0.75rem 1rem;
+  transition: var(--transition);
+}
+
+.list-group-item:hover {
+  background-color: rgba(102, 126, 234, 0.05);
+  color: var(--primary-color);
+  border-color: var(--primary-color) !important;
+  transform: translateX(4px);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+  background: var(--light-bg);
+  border-radius: 0 0 12px 12px;
+}
+
+/* ============================================
+   Footer Styles
+   ============================================ */
+footer {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d3f 100%) !important;
+  border-top: 2px solid rgba(102, 126, 234, 0.2);
+  padding: 2rem 0 !important;
+  margin-top: auto;
+}
+
+footer p {
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+footer a {
+  transition: var(--transition);
+  filter: brightness(0.8);
+}
+
+footer a:hover {
+  filter: brightness(1.2);
+  color: var(--accent-color) !important;
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   Feature Hero Section
+   ============================================ */
+.featured-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.featured-header h1 {
+  color: white;
+  margin-bottom: 0.5rem;
+  -webkit-text-fill-color: white;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 2rem 1rem !important;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem !important;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  footer .d-flex {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .text-center {
+    margin-bottom: 2rem !important;
+  }
+
+  .text-center p {
+    font-size: 0.95rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .fs-4.fw-bold {
+    font-size: 1.25rem !important;
+  }
+
+  .btn-primary {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Animation Effects
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.gradient-border {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--primary-color), var(--accent-color)) 1;
+}
