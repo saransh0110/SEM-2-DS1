@@ -60,7 +60,10 @@
 
     <!-- Search Box -->
     <div class="container mt-5">
-        <input type="text" id="search" class="form-control" placeholder="Search books by title...">
+        <input type="text"
+               id="search"
+               class="form-control"
+               placeholder="Search books by title...">
     </div>
 
     <!-- Book Cards -->
@@ -79,12 +82,20 @@
             <div class="modal-content">
 
                 <div class="modal-header">
+
                     <h5 id="modalTitle"></h5>
 
-                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                    <button class="btn-close"
+                            data-bs-dismiss="modal">
+                    </button>
+
                 </div>
 
                 <div class="modal-body">
+
+                    <img id="modalImage"
+                         class="img-fluid mb-3"
+                         alt="Book Image">
 
                     <p>
                         <strong>Author:</strong>

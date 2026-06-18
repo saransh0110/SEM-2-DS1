@@ -1,11 +1,48 @@
 const books = [
+
+    {
+        title: "The Alchemist",
+        author: "Paulo Coelho",
+        price: 299,
+        category: "Fiction",
+        description: "A magical story about following your dreams.",
+        image: "images/alchemist.jpeg"
+    },
+
     {
         title: "Atomic Habits",
         author: "James Clear",
         price: 499,
         category: "Self Help",
-        description: "Tiny changes, remarkable results.",
-        image: "images/atomic.jpg"
+        description: "A practical guide to building good habits and breaking bad ones.",
+        image: "images/atomic.jpeg"
+    },
+
+    {
+        title: "Clean Code",
+        author: "Robert C. Martin",
+        price: 599,
+        category: "Programming",
+        description: "A handbook of agile software craftsmanship.",
+        image: "images/cleancode.jpeg"
+    },
+
+    {
+        title: "CLRS",
+        author: "Thomas H. Cormen",
+        price: 899,
+        category: "Computer Science",
+        description: "Introduction to Algorithms, one of the most popular algorithm books.",
+        image: "images/clrs.jpeg"
+    },
+
+    {
+        title: "Ikigai",
+        author: "Hector Garcia & Francesc Miralles",
+        price: 350,
+        category: "Self Help",
+        description: "Discover the Japanese secret to a long and happy life.",
+        image: "images/Ikigai.jpeg"
     },
 
     {
@@ -13,46 +50,12 @@ const books = [
         author: "Robert Kiyosaki",
         price: 399,
         category: "Finance",
-        description: "Learn money management.",
-        image: "images/richdad.jpg"
-    },
-
-    {
-        title: "Clean Code",
-        author: "Robert C Martin",
-        price: 699,
-        category: "Programming",
-        description: "Guide to writing clean code.",
-        image: "images/cleancode.jpg"
-    },
-
-    {
-        title: "The Alchemist",
-        author: "Paulo Coelho",
-        price: 350,
-        category: "Fiction",
-        description: "Follow your dreams.",
-        image: "images/alchemist.jpg"
-    },
-
-    {
-        title: "Ikigai",
-        author: "Hector Garcia",
-        price: 420,
-        category: "Self Help",
-        description: "Japanese secret to long life.",
-        image: "images/ikigai.jpg"
-    },
-
-    {
-        title: "Introduction to Algorithms",
-        author: "Thomas H Cormen",
-        price: 999,
-        category: "Programming",
-        description: "Popular algorithms book.",
-        image: "images/clrs.jpg"
+        description: "Learn the basics of money and financial freedom.",
+        image: "images/richdad.jpeg"
     }
+
 ];
+
 
 const container = document.getElementById("book-container");
 
@@ -60,27 +63,37 @@ function displayBooks(bookList) {
 
     container.innerHTML = "";
 
-    for (let i = 0; i < bookList.length; i++) {
+    bookList.forEach((book, index) => {
 
         container.innerHTML += `
+
         <div class="col-md-4 mb-4">
 
-            <div class="card h-100">
+            <div class="card h-100 shadow">
 
-                <img src="${bookList[i].image}" class="card-img-top">
+                <img src="${book.image}"
+                     class="card-img-top"
+                     alt="${book.title}">
 
                 <div class="card-body">
 
-                    <h5>${bookList[i].title}</h5>
+                    <h5 class="card-title">
+                        ${book.title}
+                    </h5>
 
-                    <p>${bookList[i].author}</p>
+                    <p class="card-text">
+                        ${book.author}
+                    </p>
 
-                    <h6>₹${bookList[i].price}</h6>
+                    <p>
+                        <strong>₹${book.price}</strong>
+                    </p>
 
-                    <button
-                        class="btn btn-primary"
-                        onclick="showModal('${bookList[i].title}')">
+                    <button class="btn btn-primary"
+                            onclick="showDetails(${index})">
+
                         View Details
+
                     </button>
 
                 </div>
@@ -88,61 +101,53 @@ function displayBooks(bookList) {
             </div>
 
         </div>
+
         `;
-    }
+    });
+
 }
 
-function showModal(title) {
-
-    let selectedBook = null;
-
-    for (let i = 0; i < books.length; i++) {
-
-        if (books[i].title === title) {
-            selectedBook = books[i];
-            break;
-        }
-    }
-
-    if (selectedBook) {
-
-        document.getElementById("modalTitle").innerText =
-            selectedBook.title;
-
-        document.getElementById("modalAuthor").innerText =
-            selectedBook.author;
-
-        document.getElementById("modalPrice").innerText =
-            selectedBook.price;
-
-        document.getElementById("modalCategory").innerText =
-            selectedBook.category;
-
-        document.getElementById("modalDesc").innerText =
-            selectedBook.description;
-
-        let modal = new bootstrap.Modal(
-            document.getElementById("bookModal")
-        );
-
-        modal.show();
-    }
-}
 
 displayBooks(books);
 
-document.getElementById("search")
-.addEventListener("keyup", function () {
 
-    let searchText = this.value.toLowerCase();
+function showDetails(index) {
 
-    let filteredBooks = books.filter(function (book) {
+    document.getElementById("modalTitle").innerText =
+        books[index].title;
 
-        return book.title
-            .toLowerCase()
-            .includes(searchText);
+    document.getElementById("modalAuthor").innerText =
+        books[index].author;
 
-    });
+    document.getElementById("modalPrice").innerText =
+        books[index].price;
+
+    document.getElementById("modalCategory").innerText =
+        books[index].category;
+
+    document.getElementById("modalDesc").innerText =
+        books[index].description;
+
+    document.getElementById("modalImage").src =
+        books[index].image;
+
+    const modal = new bootstrap.Modal(
+        document.getElementById("bookModal")
+    );
+
+    modal.show();
+}
+
+
+// Search functionality
+
+document.getElementById("search").addEventListener("keyup", function () {
+
+    const searchText = this.value.toLowerCase();
+
+    const filteredBooks = books.filter(book =>
+        book.title.toLowerCase().includes(searchText)
+    );
 
     displayBooks(filteredBooks);
 
